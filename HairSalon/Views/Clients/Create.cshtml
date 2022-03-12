@@ -7,8 +7,11 @@
 <h4>Add a new client</h4>
 @using (Html.BeginForm())
 {
-  @Html.LabelFor(model => model.ClientName)
+  @Html.LabelFor(c => c.ClientName)
   @Html.TextBoxFor(model => model.ClientName)
-  <input type="submit" value="Add new task" />
+
+  @Html.LabelFor(model => model.Stylist)
+  @Html.DropDownList("StylistId")
+  <input type="submit" value="Add new client" />
 }
-<p>@Html.ActionLink("Show all items", "Index")</p>
+<p>@Html.ActionLink("Show all clients", "Index")</p>

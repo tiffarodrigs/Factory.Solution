@@ -1,18 +1,18 @@
 @{
   Layout = "_Layout";
 }
-@model HairSalon.Models.Client
+@model HairSalon.Models.Stylist
 
 <h2>Edit </h2>
 
-<h4>Edit this client: @Html.DisplayFor(model => model.ClientName)</h4>
+<h4>Edit this stylist: @Html.DisplayFor(model => model.StylistName)</h4>
 
 @using (Html.BeginForm())
 {
-    @Html.HiddenFor(model => model.ClientId)
+    @Html.HiddenFor(model => model.StylistId)
 
-    @Html.LabelFor(model => model.ClientName)
-    @Html.EditorFor(model => model.ClientName)  
+    @Html.LabelFor(model => model.StylistName)
+    @Html.EditorFor(model => model.StylistName)  
     <input type="submit" value="Save" />
 }
-<p>@Html.ActionLink("Back to Client list", "Index")</p>
+<p>@Html.ActionLink("Back to Stylist list", "Index")</p>
