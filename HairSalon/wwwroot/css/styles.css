@@ -6,4 +6,41 @@ div#footer {
   color:#CCC;
   background:#333;
   padding:8px;
+
+}
+div#header {
+  position:fixed;
+  top:0px;
+  left:0px;
+  width:100%;
+  color:#FFC93C;
+  background:#99154E;
+  padding:8px;
+  font-size: 45px;
+  font-family: fantasy;
+}
+
+body {
+  background-color: #FFDDCC;
+  text-align: center;
+  margin-top: 7%;
+}
+
+.links {
+  margin-top: 10%;
+}
+.container{
+  margin-top: 10%;
+}
+h1,h4,h5{
+  color: #99154E;
+}
+a{
+  color:#DA723C;
+}
+.home{
+  padding-top: 10%;
+}
+h3,label{
+  color:#007965;
 }
