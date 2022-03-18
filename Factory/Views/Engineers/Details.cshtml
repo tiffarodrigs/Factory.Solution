@@ -17,6 +17,7 @@
   <li>@Html.ActionLink($"{join.Machine.MachineName}","Details","Machines",new{id=join.Machine.MachineId})</li>
 }
 <p>@Html.ActionLink("Edit Engineer","Edit",new{id=Model.EngineerId})</p>
+<p>@Html.ActionLink("Delete Engineer","Delete",new{id=Model.EngineerId})</p>
 
 <p>@Html.ActionLink("Go back to engineers list","Index")</p>
 <p>@Html.ActionLink("Go back to Home", "Index","Home")</p>
