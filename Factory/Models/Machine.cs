@@ -1,11 +1,14 @@
-namespace HairSalon.Models
+namespace Factory.Models
 {
-  public class Client
+  public class Machine
   {
-    public int ClientId { get; set;}
-    public string ClientName {get;set;}
+  public  Machine()
+  {
+    this.JoinEntities =  new HashSet<EngineerMachine>();
+  }
+    public int MachineId { get; set;}
+    public string MachineName {get;set;}
 
-    public int StylistId { get; set; }
-    public virtual Stylist Stylist { get; set; }
+    public virtual ICollection<EngineerMachine> JoinEntities {get;}
   }
 }

@@ -1,14 +1,14 @@
 using System.Collections.Generic;
-namespace HairSalon.Models
+namespace Factory.Models
 {
-  public class Stylist
+  public class Engineer
   {
-    public Stylist()
+    public Engineer()
     {
-    this.Clients =new HashSet<Client>();
+    this.JoinEntities =new HashSet<EngineerMachine>();
     }
-    public int StylistId { get; set; }
-    public string StylistName { get; set; }
-    public virtual ICollection<Client> Clients { get; set;}
+    public int EngineerId { get; set; }
+    public string EngineerName { get; set; }
+    public virtual ICollection<EngineerMachine> JoinEntities {get;set;}
   }
 }
