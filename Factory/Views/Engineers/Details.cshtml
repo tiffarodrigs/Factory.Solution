@@ -4,7 +4,8 @@
 @model Factory.Models.Engineer;
 
 <h3> Engineer Details </h3>
-<p><@Html.DisplayFor(m => m.EngineerName)/p>
+<h4>Name:</h4>
+<p>@Html.DisplayFor( m => m.EngineerName)</p>
 
 <h4>Machines this Engineer is licensed to repair</h4>
 @if( @Model.JoinEntities.Count == 0 )
