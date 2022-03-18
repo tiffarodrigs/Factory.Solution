@@ -18,7 +18,7 @@ namespace Factory.Controllers
     }
     public ActionResult Index()
     {
-      List<Engineer> model = _db.Engineers.ToList();
+      List<Machine> model = _db.Machines.ToList();
       return View(model);
     }
 
@@ -28,44 +28,44 @@ namespace Factory.Controllers
     }
 
     [HttpPost]
-    public ActionResult Create(Engineer engineer)
+    public ActionResult Create(Machine machine)
     {
-      _db.Engineers.Add(engineer);
+      _db.Machines.Add(machine);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
     public ActionResult Details(int id)
     {
-      var thisEngineer = _db.Engineers.FirstOrDefault(m => m.EngineerId == id);
-      return View(thisEngineer);
+      var thisMachine = _db.Machines.FirstOrDefault(m => m.MachineId == id);
+      return View(thisMachine);
     }
 
     public ActionResult Edit(int id)
     {
-      var thisEngineer = _db.Engineers.FirstOrDefault(m => m.EngineerId == id);
-      return View(thisEngineer);
+      var thisMachine= _db.Machines.FirstOrDefault(m => m.MachineId == id);
+      return View(thisMachine);
     }
 
       [HttpPost]
-      public ActionResult Edit(Engineer engineer)
+      public ActionResult Edit(Machine machine)
       {
-        _db.Entry(engineer).State = EntityState.Modified;
+        _db.Entry(machine).State = EntityState.Modified;
         _db.SaveChanges();     
         return RedirectToAction("Index");
       }
 
       public ActionResult Delete(int id)
       {
-        var thisEngineer = _db.Engineers.FirstOrDefault(m => m.EngineerId == id);
-        return View(thisEngineer);
+        var thisMachine = _db.Machines.FirstOrDefault(m => m.MachineId == id);
+        return View(thisMachine);
       }
 
       [HttpPost, ActionName("Delete")]
       public ActionResult DeleteConfirmed(int id)
       {
-        var thisEngineer = _db.Engineers.FirstOrDefault(m => m.EngineerId == id);
-        _db.Engineers.Remove(thisEngineer);
+        var thisMachine = _db.Machines.FirstOrDefault(m => m.MachineId == id);
+        _db.Machines.Remove(thisMachine);
         _db.SaveChanges();
         return RedirectToAction("Index");
       }          

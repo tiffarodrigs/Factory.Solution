@@ -1,0 +1,17 @@
+@{
+  Layout = "_Layout";
+}
+@model Factory.Models.Machine;
+
+<h4> Edit this Machine : @Html.DisplayFor(m => m.MachineName) </h4>
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(m => m.MachineId)
+
+  @Html.LabelFor(m => m.MachineName)
+  @Html.EditorFor(m => m.MachineName)
+  <input type="submit" value="Save" />
+}
+<p>@Html.ActionLink("Go back to Machines", "Index")</p>
+<p>@Html.ActionLink("Go back to Engineers", "Index")</p>
+<p>@Html.ActionLink("Go back to Home", "Index","Home")</p>
