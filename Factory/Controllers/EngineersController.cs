@@ -35,6 +35,12 @@ namespace Factory.Controllers
         return RedirectToAction("Index");
       }
 
+      public ActionResult Details(int id)
+      {
+        var thisEngineer = _db.Engineers.FirstOrDefault(m => m.EngineerId == id);
+        return View(thisEngineer);
+      }
+
 
 
   }
