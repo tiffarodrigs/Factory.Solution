@@ -7,6 +7,10 @@
 {
   @Html.LabelFor(m => m.EngineerName)
   @Html.TextBoxFor(m => m.EngineerName)
+  
+  @Html.Label("Select machine")
+  @Html.DropDownList("MachineId")
+
   <input type="submit" value="Add this engineer" />
 }
 

@@ -7,17 +7,29 @@
 <h4>Name:</h4>
 <p>@Html.DisplayFor( m => m.EngineerName)</p>
 
-<h4>Machines this Engineer is licensed to repair</h4>
 @if( @Model.JoinEntities.Count == 0 )
 {
   <h3>None</h3>
 }
-@foreach(var join in @Model.JoinEntities )
+else
 {
-  <li>@Html.ActionLink($"{join.Machine.MachineName}","Details","Machines",new{id=join.Machine.MachineId})</li>
+  <h4>Machines this Engineer is licensed to repair</h4>
+  <ul>
+  @foreach(var join in @Model.JoinEntities )
+  {
+    <li>@Html.ActionLink($"{join.Machine.MachineName}","Details","Machines",new{id=join.Machine.MachineId})</li>
+    @using(Html.BeginForm("DeleteMachine","Engineer"))
+    {
+      @Html.Hidden("joinId",@join.EngineerMachineId)
+      <input type="submit" value="Delete machine for this engineer"/>
+
+    }
+  }
+  </ul>
 }
 <p>@Html.ActionLink("Edit Engineer","Edit",new{id=Model.EngineerId})</p>
 <p>@Html.ActionLink("Delete Engineer","Delete",new{id=Model.EngineerId})</p>
+<p>@Html.ActionLink("Add a Machine","AddMachine",new{id=Model.EngineerId})</p>
 
 <p>@Html.ActionLink("Go back to engineers list","Index")</p>
 <p>@Html.ActionLink("Go back to Home", "Index","Home")</p>

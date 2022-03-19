@@ -3,22 +3,27 @@
 }
 @model Factory.Models.Machine;
 
-<h3> Engineer Details </h3>
+<h3> Machine Details </h3>
 <h4>Name:</h4>
 <p>@Html.DisplayFor( m => m.MachineName)</p>
 
-<h4>Engineers that are licensedto repair this Machine </h4>
 @if( @Model.JoinEntities.Count == 0 )
 {
   <h3>None</h3>
 }
-@foreach(var join in @Model.JoinEntities )
+else
 {
-  <li>@Html.ActionLink($"{join.Engineer.EngineerName}","Details","Engineer",new{id=join.Engineer.EngineerId})</li>
+  <h4>Engineers that are licensed to repair this Machine </h4>
+  <ul>  
+    @foreach(var join in @Model.JoinEntities )
+    {
+      <li>@join.Engineer.EngineerName</li>
+    }
+  </ul>
 }
 <p>@Html.ActionLink("Edit Machine","Edit",new{id=Model.MachineId})</p>
 <p>@Html.ActionLink("Delete Machine","Delete",new{id=Model.MachineId})</p>
 
 <p>@Html.ActionLink("Go back to Machines list", "Index")</p>
-<p>@Html.ActionLink("Go back to Engineers list", "Index")</p>
+<p>@Html.ActionLink("Go back to Engineers list", "Index","Engineers")</p>
 <p>@Html.ActionLink("Go back to Home", "Index","Home")</p>
