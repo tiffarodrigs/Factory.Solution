@@ -88,8 +88,24 @@ namespace Factory.Controllers
 
       public ActionResult AddMachine(int id)
       {
+        var engMachEntries = _db.EngineerMachine.Where(m => m.EngineerId == id);
+        
+        List<Machine> machineList = _db.Machines.ToList();
+        List<Machine> machines = _db.Machines.ToList();
+       
+        foreach(EngineerMachine em in engMachEntries )
+        {
+          foreach(Machine mach in machines)
+          {
+            if(mach.MachineId== em.MachineId)
+            {
+              machineList.Remove(mach);
+            }
+          }
+        }
+        ViewBag.MachineId = new SelectList(machineList, "MachineId", "MachineName");
+        ViewBag.machineList = machineList.Count;
         var thisEngineer = _db.Engineers.FirstOrDefault(m => m.EngineerId == id);
-        ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "MachineName");
         return View(thisEngineer);
       }
 
@@ -104,7 +120,7 @@ namespace Factory.Controllers
         return RedirectToAction("Index");
       }  
       [HttpPost]
-      public ActionResult DeleteCategory(int joinId)
+      public ActionResult DeleteMachine(int joinId)
       {
         //This function deletes only the machine from this particular engineer.ie.it deltes entry from EngineerMachine  table
         //This does not delete the machine from the machine table

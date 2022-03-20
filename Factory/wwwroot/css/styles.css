@@ -1,4 +1,10 @@
-div#footer {
+p.menu{
+  font-size: 25px;
+  /* font-size: 5px;
+  font-family: fantasy; */
+  color:blue;
+}
+/* div#footer {
   position:fixed;
   bottom:0px;
   left:0px;
@@ -7,18 +13,20 @@ div#footer {
   background:#333;
   padding:8px;
 
-}
-div#header {
+} */
+#header {
   position:fixed;
   top:0px;
   left:0px;
   width:100%;
-  color:#FFC93C;
-  background:#99154E;
   padding:8px;
-  font-size: 45px;
+  background:#99154E;
+  color:#FFC93C; 
+  font-size: large;
   font-family: fantasy;
 }
+
+
 
 body {
   background-color: #FFDDCC;
@@ -37,6 +45,7 @@ h1,h4,h5{
 }
 a{
   color:#DA723C;
+  font-size:medium;
 }
 .home{
   padding-top: 10%;
