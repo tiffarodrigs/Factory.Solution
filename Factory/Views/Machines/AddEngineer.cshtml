@@ -1,0 +1,19 @@
+@{
+  Layout = "_Layout";
+}
+@model Factory.Models.Machine;
+
+<h4> Add Engineer for this machine : @Html.DisplayFor(m => m.MachineName) </h4>
+@if(ViewBag.engineerList!=0)
+{
+  @using (Html.BeginForm())
+  {
+
+    @Html.HiddenFor(m => m.MachineId)
+      @Html.Label("Select engineer")
+      @Html.DropDownList("EngineerId")
+
+      <input type="submit" value="Save" />
+  }
+}  
+

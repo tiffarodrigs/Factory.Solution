@@ -71,6 +71,48 @@ namespace Factory.Controllers
         _db.Machines.Remove(thisMachine);
         _db.SaveChanges();
         return RedirectToAction("Index");
-      }          
+      }   
+
+            public ActionResult AddEngineer(int id)
+      {
+        var engMachEntries = _db.EngineerMachine.Where(m => m.MachineId == id);        
+        List<Engineer> engineerList = _db.Engineers.ToList();
+        List<Engineer> engineers = _db.Engineers.ToList();     
+        foreach(EngineerMachine em in engMachEntries )
+        {
+          foreach(Engineer eng in engineers)
+          {
+            if(eng.EngineerId== em.EngineerId)
+            {
+              engineerList.Remove(eng);
+            }
+          }
+        }
+        ViewBag.EngineerId = new SelectList(engineerList, "EngineerId", "EngineerName");
+        ViewBag.engineerList = engineerList.Count;
+        var thisMachine = _db.Machines.FirstOrDefault(m => m.MachineId == id);
+        return View(thisMachine);
+      }
+
+      [HttpPost]
+      public ActionResult AddEngineer(Machine machine,int EngineerId)
+      {
+        if(EngineerId!=0)
+        {
+          _db.EngineerMachine.Add(new EngineerMachine{ EngineerId = EngineerId,MachineId = machine.MachineId});
+          _db.SaveChanges();
+        }    
+        return RedirectToAction("Index");
+      }  
+      [HttpPost]
+      public ActionResult DeleteEngineer(int joinId)
+      {
+        //This function deletes only the engineer from this particular machine.ie.it deltes entry from EngineerMachine  table
+        //This does not delete the engineer from the engineer table
+          var joinEntry = _db.EngineerMachine.FirstOrDefault(m => m.EngineerMachineId == joinId);
+          _db.EngineerMachine.Remove(joinEntry);
+          _db.SaveChanges();
+          return RedirectToAction("Index");
+      }           
   }
 }

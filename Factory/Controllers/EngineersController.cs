@@ -88,11 +88,9 @@ namespace Factory.Controllers
 
       public ActionResult AddMachine(int id)
       {
-        var engMachEntries = _db.EngineerMachine.Where(m => m.EngineerId == id);
-        
+        var engMachEntries = _db.EngineerMachine.Where(m => m.EngineerId == id);        
         List<Machine> machineList = _db.Machines.ToList();
-        List<Machine> machines = _db.Machines.ToList();
-       
+        List<Machine> machines = _db.Machines.ToList();     
         foreach(EngineerMachine em in engMachEntries )
         {
           foreach(Machine mach in machines)
